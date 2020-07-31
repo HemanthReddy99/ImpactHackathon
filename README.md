@@ -1,3 +1,3 @@
-# AndroidTfLiteCameraX
+# Project for Impact Hackathon as a part of SAP iXp
 
-Uses a MobileNet Model for Image Classification with CameraX and GPU Delegate
+Coin reader for specially abled people
