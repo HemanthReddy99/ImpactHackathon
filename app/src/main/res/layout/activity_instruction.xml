@@ -23,15 +23,16 @@
         android:id="@+id/instText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="After the BEEP, keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n\n Allow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\n\nTap to continue."
+        android:background="#FFECB3"
+        android:gravity="center"
+        android:onClick="onClick"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"
+        android:text="After the BEEP, keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n\n Allow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\n\nTap to continue."
         android:textAllCaps="false"
-        android:textSize="26sp"
-        android:gravity="center"
         android:textColor="#000000"
-        android:background="#FFECB3"
-        android:layout_gravity="center" />
+        android:textSize="26sp" />
 
 </LinearLayout>

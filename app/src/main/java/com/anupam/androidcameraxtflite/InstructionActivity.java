@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,12 +45,12 @@ public class InstructionActivity extends AppCompatActivity {
     }
 
     private void openCamera() {
-        try{
-            TimeUnit.SECONDS.sleep(4);
+//        try{
+//            TimeUnit.SECONDS.sleep(4);
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        }catch(InterruptedException e){
-            //
-        }
+//        }catch(InterruptedException e){
+//            //
+//        }
     }
 
     private void speak() {
@@ -59,6 +60,10 @@ public class InstructionActivity extends AppCompatActivity {
         } else {
             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
         }
+
+    }
+    public void onClick(View view)
+    {
         openCamera();
     }
 
