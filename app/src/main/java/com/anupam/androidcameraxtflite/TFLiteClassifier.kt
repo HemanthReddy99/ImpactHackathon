@@ -53,9 +53,9 @@ class TFLiteClassifier(private val context: Context) {
 
 
         val assetManager = context.assets
-        val model = loadModelFile(assetManager, "mobilenet_v1_1.0_224.tflite")
+        val model = loadModelFile(assetManager, "retrained_graph.tflite")
 
-        labels = loadLines(context, "labels.txt")
+        labels = loadLines(context, "retrained_labels.txt")
         val options = Interpreter.Options()
         gpuDelegate = GpuDelegate()
         options.addDelegate(gpuDelegate)
