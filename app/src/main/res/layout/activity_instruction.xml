@@ -10,13 +10,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:text="Instructions"
         android:textStyle="bold"
-        android:textSize="38sp"
+        android:textSize="44sp"
         android:textAllCaps="true"
         android:padding="20sp"
         android:textColor="#000000"
+        android:background="#FFC107"
         android:gravity="center" />
 
     <Button
@@ -30,9 +31,9 @@
         android:onClick="onClick"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"
-        android:text="After the BEEP, keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n\n Allow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\n\nTap to continue."
+        android:text="Keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n\n Allow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\n\nTap to continue."
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="26sp" />
+        android:textSize="30sp" />
 
 </LinearLayout>
