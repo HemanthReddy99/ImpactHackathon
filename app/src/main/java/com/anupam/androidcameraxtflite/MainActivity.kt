@@ -12,6 +12,8 @@ import android.graphics.*
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import android.widget.Toast
 import androidx.camera.core.*
@@ -20,6 +22,8 @@ import java.io.ByteArrayOutputStream
 
 
 class MainActivity : AppCompatActivity() {
+
+    
 
     private var lensFacing = CameraX.LensFacing.BACK
     private val TAG = "MainActivity"
@@ -63,8 +67,15 @@ class MainActivity : AppCompatActivity() {
         }.build()
 
         val preview = Preview(previewConfig)
+//        preview.setOnPreviewOutputUpdateListener {
+//            textureView.surfaceTexture = it.surfaceTexture
+//            updateTransform()
+//        }
         preview.setOnPreviewOutputUpdateListener {
+            val parent = textureView.parent as ViewGroup
+            parent.removeView(textureView)
             textureView.surfaceTexture = it.surfaceTexture
+            parent.addView(textureView, 0)
             updateTransform()
         }
 
