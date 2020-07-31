@@ -12,18 +12,24 @@ import android.graphics.*
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
+import android.speech.tts.TextToSpeech
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),TextToSpeech.OnInitListener {
 
-    
+    private var tts: TextToSpeech? = null
+    private var rlayout: RelativeLayout? = null
+    private var eText: TextView? = null
 
     private var lensFacing = CameraX.LensFacing.BACK
     private val TAG = "MainActivity"
@@ -51,7 +57,39 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { }
             .addOnFailureListener { e -> Log.e(TAG, "Error in setting up the classifier.", e) }
 
+        rlayout = this.rlBottom
+        eText = this.predictedTextView
+
+        rlayout!!.isEnabled = false;
+        tts = TextToSpeech(this, this)
+
+        rlayout!!.setOnClickListener { speakOut() }
+
     }
+    override fun onInit(status: Int) {
+
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+            } else {
+                rlayout!!.isEnabled = true
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!")
+        }
+
+    }
+
+    private fun speakOut() {
+        val text = eText!!.text.toString()
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null,"")
+    }
+
+
 
     private fun startCamera() {
         val metrics = DisplayMetrics().also { textureView.display.getRealMetrics(it) }
@@ -176,6 +214,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         tfLiteClassifier.close()
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
         super.onDestroy()
     }
 }
