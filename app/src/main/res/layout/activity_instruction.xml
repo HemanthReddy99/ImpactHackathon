@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textSize="44sp"
         android:textAllCaps="true"
-        android:padding="20sp"
+        android:padding="15sp"
         android:textColor="#000000"
         android:background="#FFC107"
         android:gravity="center" />
@@ -31,9 +31,9 @@
         android:onClick="onClick"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"
-        android:text="Keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n\n Allow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\n\nTap to continue."
+        android:text="Keep the coin you want to identify in front of camera, at least 6 inches away from it!\n\n After placing the coin, click anywhere on bottom to get the result. \n\nAllow this application to access Camera of your device by clicking on the bottom right, if not done yet.\n\nTap to continue."
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="28sp" />
 
 </LinearLayout>
